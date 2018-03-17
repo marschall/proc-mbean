@@ -26,6 +26,32 @@ public class Proc implements ProcMXBean {
     return parse(Paths.get("/proc/self/maps"));
   }
 
+  @Override
+  public String mappingsString() {
+    StringBuilder buffer = new StringBuilder();
+    buffer.append("size;read;write;execute;shared;private;pathname\n");
+    for (Mapping mapping : this.getMappings()) {
+      buffer.append(Long.toUnsignedString(mapping.getSize()));
+      buffer.append(';');
+      buffer.append(Boolean.toString(mapping.isRead()));
+      buffer.append(';');
+      buffer.append(Boolean.toString(mapping.isWrite()));
+      buffer.append(';');
+      buffer.append(Boolean.toString(mapping.isExecute()));
+      buffer.append(';');
+      buffer.append(Boolean.toString(mapping.isShared()));
+      buffer.append(';');
+      buffer.append(Boolean.toString(mapping.isPrivate()));
+      String pathname = mapping.getPathname();
+      if (pathname != null) {
+        buffer.append(';');
+        buffer.append(pathname);
+      }
+      buffer.append('\n');
+    }
+    return buffer.toString();
+  }
+
   static List<Mapping> parse(Path path) {
     try (Stream<String> lines = Files.lines(path, StandardCharsets.US_ASCII)) {
       return lines

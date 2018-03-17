@@ -6,4 +6,6 @@ public interface ProcMXBean {
 
   List<Mapping> getMappings();
 
+  String mappingsString();
+
 }
