@@ -29,7 +29,20 @@ public class Proc implements ProcMXBean {
   @Override
   public String mappingsString(char separator) {
     StringBuilder buffer = new StringBuilder();
-    buffer.append("size;read;write;execute;shared;private;pathname\n");
+    buffer.append("size");
+    buffer.append(separator);
+    buffer.append("read");
+    buffer.append(separator);
+    buffer.append("write");
+    buffer.append(separator);
+    buffer.append("execute");
+    buffer.append(separator);
+    buffer.append("shared");
+    buffer.append(separator);
+    buffer.append("private");
+    buffer.append(separator);
+    buffer.append("pathname\n");
+
     for (Mapping mapping : this.getMappings()) {
       String pathname = mapping.getPathname();
       if (pathname != null) {

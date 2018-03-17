@@ -1,4 +1,4 @@
-size;read;write;execute;shared;private;pathname
+size,read,write,execute,shared,private,pathname
 4096,true,false,true,false,true,/home/marschall/bin/java/jdk1.8.0_162/bin/java
 4096,true,true,false,false,true,/home/marschall/bin/java/jdk1.8.0_162/bin/java
 135168,true,true,false,false,true,[heap]
