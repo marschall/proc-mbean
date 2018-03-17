@@ -27,27 +27,27 @@ public class Proc implements ProcMXBean {
   }
 
   @Override
-  public String mappingsString() {
+  public String mappingsString(char separator) {
     StringBuilder buffer = new StringBuilder();
     buffer.append("size;read;write;execute;shared;private;pathname\n");
     for (Mapping mapping : this.getMappings()) {
-      buffer.append(Long.toUnsignedString(mapping.getSize()));
-      buffer.append(';');
-      buffer.append(Boolean.toString(mapping.isRead()));
-      buffer.append(';');
-      buffer.append(Boolean.toString(mapping.isWrite()));
-      buffer.append(';');
-      buffer.append(Boolean.toString(mapping.isExecute()));
-      buffer.append(';');
-      buffer.append(Boolean.toString(mapping.isShared()));
-      buffer.append(';');
-      buffer.append(Boolean.toString(mapping.isPrivate()));
       String pathname = mapping.getPathname();
       if (pathname != null) {
-        buffer.append(';');
+        buffer.append(Long.toUnsignedString(mapping.getSize()));
+        buffer.append(separator);
+        buffer.append(Boolean.toString(mapping.isRead()));
+        buffer.append(separator);
+        buffer.append(Boolean.toString(mapping.isWrite()));
+        buffer.append(separator);
+        buffer.append(Boolean.toString(mapping.isExecute()));
+        buffer.append(separator);
+        buffer.append(Boolean.toString(mapping.isShared()));
+        buffer.append(separator);
+        buffer.append(Boolean.toString(mapping.isPrivate()));
+        buffer.append(separator);
         buffer.append(pathname);
+        buffer.append('\n');
       }
-      buffer.append('\n');
     }
     return buffer.toString();
   }

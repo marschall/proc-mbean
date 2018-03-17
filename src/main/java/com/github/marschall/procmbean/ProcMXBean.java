@@ -6,6 +6,6 @@ public interface ProcMXBean {
 
   List<Mapping> getMappings();
 
-  String mappingsString();
+  String mappingsString(char separator);
 
 }
