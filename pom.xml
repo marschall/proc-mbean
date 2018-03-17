@@ -7,7 +7,7 @@
   
   <name>proc mbean</name>
   <inceptionYear>2018</inceptionYear>
-  <description>An MBean that exposes process memory mappings.</description>
+  <description>An MBean that exposes process memory information.</description>
 
   <url>https://github.com/marschall/proc-mbean</url>
 
