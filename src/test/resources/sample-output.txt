@@ -1,0 +1,190 @@
+00400000-00401000 r-xp 00000000 08:12 42337235                           /home/marschall/bin/java/jdk1.8.0_162/bin/java
+00600000-00601000 rw-p 00000000 08:12 42337235                           /home/marschall/bin/java/jdk1.8.0_162/bin/java
+02547000-02568000 rw-p 00000000 00:00 0                                  [heap]
+3d2400000-3fc300000 rw-p 00000000 00:00 0 
+3fc300000-670c00000 ---p 00000000 00:00 0 
+670c00000-685b00000 rw-p 00000000 00:00 0 
+685b00000-7c0000000 ---p 00000000 00:00 0 
+7c0000000-7c0120000 rw-p 00000000 00:00 0 
+7c0120000-800000000 ---p 00000000 00:00 0 
+7fe910000000-7fe910021000 rw-p 00000000 00:00 0 
+7fe910021000-7fe914000000 ---p 00000000 00:00 0 
+7fe914000000-7fe914021000 rw-p 00000000 00:00 0 
+7fe914021000-7fe918000000 ---p 00000000 00:00 0 
+7fe918000000-7fe918265000 rw-p 00000000 00:00 0 
+7fe918265000-7fe91c000000 ---p 00000000 00:00 0 
+7fe91c000000-7fe91c021000 rw-p 00000000 00:00 0 
+7fe91c021000-7fe920000000 ---p 00000000 00:00 0 
+7fe920000000-7fe920130000 rw-p 00000000 00:00 0 
+7fe920130000-7fe924000000 ---p 00000000 00:00 0 
+7fe924000000-7fe9240fb000 rw-p 00000000 00:00 0 
+7fe9240fb000-7fe928000000 ---p 00000000 00:00 0 
+7fe928000000-7fe928021000 rw-p 00000000 00:00 0 
+7fe928021000-7fe92c000000 ---p 00000000 00:00 0 
+7fe92c000000-7fe92c09d000 rw-p 00000000 00:00 0 
+7fe92c09d000-7fe930000000 ---p 00000000 00:00 0 
+7fe930000000-7fe930021000 rw-p 00000000 00:00 0 
+7fe930021000-7fe934000000 ---p 00000000 00:00 0 
+7fe934000000-7fe934021000 rw-p 00000000 00:00 0 
+7fe934021000-7fe938000000 ---p 00000000 00:00 0 
+7fe938000000-7fe938021000 rw-p 00000000 00:00 0 
+7fe938021000-7fe93c000000 ---p 00000000 00:00 0 
+7fe93c920000-7fe95c000000 rw-p 00000000 00:00 0 
+7fe95c000000-7fe95c021000 rw-p 00000000 00:00 0 
+7fe95c021000-7fe960000000 ---p 00000000 00:00 0 
+7fe960000000-7fe960021000 rw-p 00000000 00:00 0 
+7fe960021000-7fe964000000 ---p 00000000 00:00 0 
+7fe964000000-7fe964021000 rw-p 00000000 00:00 0 
+7fe964021000-7fe968000000 ---p 00000000 00:00 0 
+7fe968000000-7fe968021000 rw-p 00000000 00:00 0 
+7fe968021000-7fe96c000000 ---p 00000000 00:00 0 
+7fe96c000000-7fe96c021000 rw-p 00000000 00:00 0 
+7fe96c021000-7fe970000000 ---p 00000000 00:00 0 
+7fe970000000-7fe970021000 rw-p 00000000 00:00 0 
+7fe970021000-7fe974000000 ---p 00000000 00:00 0 
+7fe978000000-7fe978021000 rw-p 00000000 00:00 0 
+7fe978021000-7fe97c000000 ---p 00000000 00:00 0 
+7fe97cc45000-7fe97cc56000 r-xp 00000000 08:12 42338990                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libnio.so
+7fe97cc56000-7fe97ce55000 ---p 00011000 08:12 42338990                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libnio.so
+7fe97ce55000-7fe97ce56000 rw-p 00010000 08:12 42338990                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libnio.so
+7fe97ce56000-7fe97ce59000 ---p 00000000 00:00 0 
+7fe97ce59000-7fe97cf57000 rw-p 00000000 00:00 0 
+7fe97cf57000-7fe97cf6d000 r-xp 00000000 08:12 42338987                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libnet.so
+7fe97cf6d000-7fe97d16d000 ---p 00016000 08:12 42338987                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libnet.so
+7fe97d16d000-7fe97d16e000 rw-p 00016000 08:12 42338987                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libnet.so
+7fe97d16e000-7fe97d1c3000 r--s 00367000 08:12 32375113                   /home/marschall/.m2/repository/org/assertj/assertj-core/3.9.1/assertj-core-3.9.1.jar
+7fe97d1c3000-7fe97d259000 r--s 0110a000 08:12 42338833                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/ext/jfxrt.jar
+7fe97d259000-7fe97d25a000 ---p 00000000 00:00 0 
+7fe97d25a000-7fe97d35a000 rw-p 00000000 00:00 0 
+7fe97d35a000-7fe97d35d000 ---p 00000000 00:00 0 
+7fe97d35d000-7fe97d45b000 rw-p 00000000 00:00 0 
+7fe97d45b000-7fe97d45e000 ---p 00000000 00:00 0 
+7fe97d45e000-7fe97d55c000 rw-p 00000000 00:00 0 
+7fe97d55c000-7fe97d55f000 ---p 00000000 00:00 0 
+7fe97d55f000-7fe97d65d000 rw-p 00000000 00:00 0 
+7fe97d65d000-7fe97d660000 ---p 00000000 00:00 0 
+7fe97d660000-7fe97d75e000 rw-p 00000000 00:00 0 
+7fe97d75e000-7fe97d761000 ---p 00000000 00:00 0 
+7fe97d761000-7fe97d85f000 rw-p 00000000 00:00 0 
+7fe97d85f000-7fe97d862000 ---p 00000000 00:00 0 
+7fe97d862000-7fe97d960000 rw-p 00000000 00:00 0 
+7fe97d960000-7fe97dc8e000 r--p 00000000 08:12 55574944                   /usr/lib/locale/locale-archive
+7fe97dc8e000-7fe97dc91000 ---p 00000000 00:00 0 
+7fe97dc91000-7fe97dd8f000 rw-p 00000000 00:00 0 
+7fe97dd8f000-7fe97dd92000 ---p 00000000 00:00 0 
+7fe97dd92000-7fe97de90000 rw-p 00000000 00:00 0 
+7fe97de90000-7fe97de91000 ---p 00000000 00:00 0 
+7fe97de91000-7fe980000000 rw-p 00000000 00:00 0 
+7fe980000000-7fe980021000 rw-p 00000000 00:00 0 
+7fe980021000-7fe984000000 ---p 00000000 00:00 0 
+7fe98400c000-7fe984027000 r--s 001d4000 08:12 42338835                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/ext/nashorn.jar
+7fe984027000-7fe9859c4000 rw-p 00000000 00:00 0 
+7fe9859c4000-7fe985b9d000 r--s 03d65000 08:12 42338771                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/rt.jar
+7fe985b9d000-7fe985ced000 rw-p 00000000 00:00 0 
+7fe985ced000-7fe987091000 ---p 00000000 00:00 0 
+7fe987091000-7fe9871e1000 rw-p 00000000 00:00 0 
+7fe9871e1000-7fe988585000 ---p 00000000 00:00 0 
+7fe988585000-7fe98862d000 rw-p 00000000 00:00 0 
+7fe98862d000-7fe988fff000 ---p 00000000 00:00 0 
+7fe988fff000-7fe989000000 rw-p 00000000 00:00 0 
+7fe989000000-7fe9892b0000 rwxp 00000000 00:00 0 
+7fe9892b0000-7fe998000000 ---p 00000000 00:00 0 
+7fe998000000-7fe99847c000 rw-p 00000000 00:00 0 
+7fe99847c000-7fe99c000000 ---p 00000000 00:00 0 
+7fe99c00d000-7fe99c929000 rw-p 00000000 00:00 0 
+7fe99c929000-7fe99ca29000 ---p 00000000 00:00 0 
+7fe99ca29000-7fe99cb64000 rw-p 00000000 00:00 0 
+7fe99cb64000-7fe99cb65000 ---p 00000000 00:00 0 
+7fe99cb65000-7fe99cc65000 rw-p 00000000 00:00 0 
+7fe99cc65000-7fe99cc66000 ---p 00000000 00:00 0 
+7fe99cc66000-7fe99cd66000 rw-p 00000000 00:00 0 
+7fe99cd66000-7fe99cd67000 ---p 00000000 00:00 0 
+7fe99cd67000-7fe99ce67000 rw-p 00000000 00:00 0 
+7fe99ce67000-7fe99ce68000 ---p 00000000 00:00 0 
+7fe99ce68000-7fe99cf68000 rw-p 00000000 00:00 0 
+7fe99cf68000-7fe99cf69000 ---p 00000000 00:00 0 
+7fe99cf69000-7fe99d069000 rw-p 00000000 00:00 0 
+7fe99d069000-7fe99d06a000 ---p 00000000 00:00 0 
+7fe99d06a000-7fe99d16a000 rw-p 00000000 00:00 0 
+7fe99d16a000-7fe99d16b000 ---p 00000000 00:00 0 
+7fe99d16b000-7fe99d26b000 rw-p 00000000 00:00 0 
+7fe99d26b000-7fe99d26c000 ---p 00000000 00:00 0 
+7fe99d26c000-7fe99d377000 rw-p 00000000 00:00 0 
+7fe99d377000-7fe99d72c000 ---p 00000000 00:00 0 
+7fe99d72c000-7fe99d747000 r-xp 00000000 08:12 42338983                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libzip.so
+7fe99d747000-7fe99d947000 ---p 0001b000 08:12 42338983                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libzip.so
+7fe99d947000-7fe99d948000 rw-p 0001b000 08:12 42338983                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libzip.so
+7fe99d948000-7fe99d953000 r-xp 00000000 08:12 73924657                   /lib/x86_64-linux-gnu/libnss_files-2.26.so
+7fe99d953000-7fe99db52000 ---p 0000b000 08:12 73924657                   /lib/x86_64-linux-gnu/libnss_files-2.26.so
+7fe99db52000-7fe99db53000 r--p 0000a000 08:12 73924657                   /lib/x86_64-linux-gnu/libnss_files-2.26.so
+7fe99db53000-7fe99db54000 rw-p 0000b000 08:12 73924657                   /lib/x86_64-linux-gnu/libnss_files-2.26.so
+7fe99db54000-7fe99db5a000 rw-p 00000000 00:00 0 
+7fe99db5a000-7fe99db65000 r-xp 00000000 08:12 73924659                   /lib/x86_64-linux-gnu/libnss_nis-2.26.so
+7fe99db65000-7fe99dd64000 ---p 0000b000 08:12 73924659                   /lib/x86_64-linux-gnu/libnss_nis-2.26.so
+7fe99dd64000-7fe99dd65000 r--p 0000a000 08:12 73924659                   /lib/x86_64-linux-gnu/libnss_nis-2.26.so
+7fe99dd65000-7fe99dd66000 rw-p 0000b000 08:12 73924659                   /lib/x86_64-linux-gnu/libnss_nis-2.26.so
+7fe99dd66000-7fe99dd7d000 r-xp 00000000 08:12 73924654                   /lib/x86_64-linux-gnu/libnsl-2.26.so
+7fe99dd7d000-7fe99df7c000 ---p 00017000 08:12 73924654                   /lib/x86_64-linux-gnu/libnsl-2.26.so
+7fe99df7c000-7fe99df7d000 r--p 00016000 08:12 73924654                   /lib/x86_64-linux-gnu/libnsl-2.26.so
+7fe99df7d000-7fe99df7e000 rw-p 00017000 08:12 73924654                   /lib/x86_64-linux-gnu/libnsl-2.26.so
+7fe99df7e000-7fe99df80000 rw-p 00000000 00:00 0 
+7fe99df80000-7fe99df88000 r-xp 00000000 08:12 73924655                   /lib/x86_64-linux-gnu/libnss_compat-2.26.so
+7fe99df88000-7fe99e187000 ---p 00008000 08:12 73924655                   /lib/x86_64-linux-gnu/libnss_compat-2.26.so
+7fe99e187000-7fe99e188000 r--p 00007000 08:12 73924655                   /lib/x86_64-linux-gnu/libnss_compat-2.26.so
+7fe99e188000-7fe99e189000 rw-p 00008000 08:12 73924655                   /lib/x86_64-linux-gnu/libnss_compat-2.26.so
+7fe99e189000-7fe99e1b4000 r-xp 00000000 08:12 42338977                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libjava.so
+7fe99e1b4000-7fe99e3b3000 ---p 0002b000 08:12 42338977                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libjava.so
+7fe99e3b3000-7fe99e3b5000 rw-p 0002a000 08:12 42338977                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libjava.so
+7fe99e3b5000-7fe99e3c2000 r-xp 00000000 08:12 42338982                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libverify.so
+7fe99e3c2000-7fe99e5c2000 ---p 0000d000 08:12 42338982                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libverify.so
+7fe99e5c2000-7fe99e5c4000 rw-p 0000d000 08:12 42338982                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/libverify.so
+7fe99e5c4000-7fe99e5cb000 r-xp 00000000 08:12 73924664                   /lib/x86_64-linux-gnu/librt-2.26.so
+7fe99e5cb000-7fe99e7ca000 ---p 00007000 08:12 73924664                   /lib/x86_64-linux-gnu/librt-2.26.so
+7fe99e7ca000-7fe99e7cb000 r--p 00006000 08:12 73924664                   /lib/x86_64-linux-gnu/librt-2.26.so
+7fe99e7cb000-7fe99e7cc000 rw-p 00007000 08:12 73924664                   /lib/x86_64-linux-gnu/librt-2.26.so
+7fe99e7cc000-7fe99e921000 r-xp 00000000 08:12 73924651                   /lib/x86_64-linux-gnu/libm-2.26.so
+7fe99e921000-7fe99eb20000 ---p 00155000 08:12 73924651                   /lib/x86_64-linux-gnu/libm-2.26.so
+7fe99eb20000-7fe99eb21000 r--p 00154000 08:12 73924651                   /lib/x86_64-linux-gnu/libm-2.26.so
+7fe99eb21000-7fe99eb22000 rw-p 00155000 08:12 73924651                   /lib/x86_64-linux-gnu/libm-2.26.so
+7fe99eb22000-7fe99f7fb000 r-xp 00000000 08:12 42338959                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/server/libjvm.so
+7fe99f7fb000-7fe99f9fa000 ---p 00cd9000 08:12 42338959                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/server/libjvm.so
+7fe99f9fa000-7fe99fad4000 rw-p 00cd8000 08:12 42338959                   /home/marschall/bin/java/jdk1.8.0_162/jre/lib/amd64/server/libjvm.so
+7fe99fad4000-7fe99fb1f000 rw-p 00000000 00:00 0 
+7fe99fb1f000-7fe99fcf5000 r-xp 00000000 08:12 73924647                   /lib/x86_64-linux-gnu/libc-2.26.so
+7fe99fcf5000-7fe99fef5000 ---p 001d6000 08:12 73924647                   /lib/x86_64-linux-gnu/libc-2.26.so
+7fe99fef5000-7fe99fef9000 r--p 001d6000 08:12 73924647                   /lib/x86_64-linux-gnu/libc-2.26.so
+7fe99fef9000-7fe99fefb000 rw-p 001da000 08:12 73924647                   /lib/x86_64-linux-gnu/libc-2.26.so
+7fe99fefb000-7fe99feff000 rw-p 00000000 00:00 0 
+7fe99feff000-7fe99ff02000 r-xp 00000000 08:12 73924650                   /lib/x86_64-linux-gnu/libdl-2.26.so
+7fe99ff02000-7fe9a0101000 ---p 00003000 08:12 73924650                   /lib/x86_64-linux-gnu/libdl-2.26.so
+7fe9a0101000-7fe9a0102000 r--p 00002000 08:12 73924650                   /lib/x86_64-linux-gnu/libdl-2.26.so
+7fe9a0102000-7fe9a0103000 rw-p 00003000 08:12 73924650                   /lib/x86_64-linux-gnu/libdl-2.26.so
+7fe9a0103000-7fe9a0119000 r-xp 00000000 08:12 42338596                   /home/marschall/bin/java/jdk1.8.0_162/lib/amd64/jli/libjli.so
+7fe9a0119000-7fe9a0318000 ---p 00016000 08:12 42338596                   /home/marschall/bin/java/jdk1.8.0_162/lib/amd64/jli/libjli.so
+7fe9a0318000-7fe9a0319000 rw-p 00015000 08:12 42338596                   /home/marschall/bin/java/jdk1.8.0_162/lib/amd64/jli/libjli.so
+7fe9a0319000-7fe9a0333000 r-xp 00000000 08:12 73924662                   /lib/x86_64-linux-gnu/libpthread-2.26.so
+7fe9a0333000-7fe9a0532000 ---p 0001a000 08:12 73924662                   /lib/x86_64-linux-gnu/libpthread-2.26.so
+7fe9a0532000-7fe9a0533000 r--p 00019000 08:12 73924662                   /lib/x86_64-linux-gnu/libpthread-2.26.so
+7fe9a0533000-7fe9a0534000 rw-p 0001a000 08:12 73924662                   /lib/x86_64-linux-gnu/libpthread-2.26.so
+7fe9a0534000-7fe9a0538000 rw-p 00000000 00:00 0 
+7fe9a0538000-7fe9a055f000 r-xp 00000000 08:12 73924643                   /lib/x86_64-linux-gnu/ld-2.26.so
+7fe9a055f000-7fe9a0631000 rw-p 00000000 00:00 0 
+7fe9a0631000-7fe9a0634000 ---p 00000000 00:00 0 
+7fe9a0634000-7fe9a0736000 rw-p 00000000 00:00 0 
+7fe9a0746000-7fe9a0748000 r--s 00012000 08:12 36176425                   /home/marschall/.m2/repository/org/junit/platform/junit-platform-launcher/1.1.0/junit-platform-launcher-1.1.0.jar
+7fe9a0748000-7fe9a074b000 r--s 00014000 08:12 36176423                   /home/marschall/.m2/repository/org/junit/platform/junit-platform-engine/1.1.0/junit-platform-engine-1.1.0.jar
+7fe9a074b000-7fe9a074e000 r--s 00020000 08:12 36176421                   /home/marschall/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.1.0/junit-jupiter-engine-5.1.0.jar
+7fe9a074e000-7fe9a0750000 r--s 00011000 08:12 36176419                   /home/marschall/.m2/repository/org/junit/platform/junit-platform-commons/1.1.0/junit-platform-commons-1.1.0.jar
+7fe9a0750000-7fe9a0751000 r--s 00001000 08:12 36045863                   /home/marschall/.m2/repository/org/opentest4j/opentest4j/1.0.0/opentest4j-1.0.0.jar
+7fe9a0751000-7fe9a0752000 r--s 00000000 08:12 36045861                   /home/marschall/.m2/repository/org/apiguardian/apiguardian-api/1.0.0/apiguardian-api-1.0.0.jar
+7fe9a0752000-7fe9a0755000 r--s 00017000 08:12 36176418                   /home/marschall/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.1.0/junit-jupiter-api-5.1.0.jar
+7fe9a0755000-7fe9a075d000 rw-s 00000000 08:12 87294085                   /tmp/hsperfdata_marschall/7586
+7fe9a075d000-7fe9a075e000 rw-p 00000000 00:00 0 
+7fe9a075e000-7fe9a075f000 r--p 00000000 00:00 0 
+7fe9a075f000-7fe9a0760000 r--p 00027000 08:12 73924643                   /lib/x86_64-linux-gnu/ld-2.26.so
+7fe9a0760000-7fe9a0761000 rw-p 00028000 08:12 73924643                   /lib/x86_64-linux-gnu/ld-2.26.so
+7fe9a0761000-7fe9a0762000 rw-p 00000000 00:00 0 
+7ffe13ba3000-7ffe13bc5000 rw-p 00000000 00:00 0                          [stack]
+7ffe13bec000-7ffe13bef000 r--p 00000000 00:00 0                          [vvar]
+7ffe13bef000-7ffe13bf1000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
