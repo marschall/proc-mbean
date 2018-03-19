@@ -6,6 +6,10 @@ public interface ProcMXBean {
 
   List<Mapping> getMappings();
 
+  int getOomScore();
+
+  IoStatistics getIoStatistics();
+
   String mappingsString(char separator);
 
 }
