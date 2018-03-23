@@ -2,7 +2,7 @@ package com.github.marschall.procmbean;
 
 import java.beans.ConstructorProperties;
 
-public class Mapping {
+public final class Mapping {
 
   private final long size;
   private final boolean read;

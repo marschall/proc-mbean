@@ -304,7 +304,7 @@ public class Proc implements ProcMXBean {
     return smaps(this.procSelf.resolve("maps"));
   }
 
-  static String smaps(Path resolve) {
+  static String smaps(Path path) {
     return "smaps";
   }
 
@@ -313,17 +313,33 @@ public class Proc implements ProcMXBean {
     return stat(this.procSelf.resolve("stat"));
   }
 
-  static String stat(Path resolve) {
+  static String stat(Path path) {
     return "stat";
   }
 
   @Override
-  public String statm() {
+  public MemoryUsage statm() {
     return statm(this.procSelf.resolve("statm"));
   }
 
-  static String statm(Path resolve) {
-    return "statm";
+  static MemoryUsage statm(Path path) {
+
+    try (InputStream input = Files.newInputStream(path);
+         Reader reader = new InputStreamReader(input, StandardCharsets.US_ASCII);
+         BufferedReader bufferedReader = new BufferedReader(reader, 64)) {
+
+      String line = bufferedReader.readLine();
+      String[] elements = line.split(" ");
+
+      long totalProgram = Long.parseUnsignedLong(elements[0]);
+      long residentSet = Long.parseUnsignedLong(elements[1]);
+      long residentShared = Long.parseUnsignedLong(elements[2]);
+      long text = Long.parseUnsignedLong(elements[3]);
+      long data = Long.parseUnsignedLong(elements[5]);
+      return new MemoryUsage(totalProgram, residentSet, residentShared, text, data);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
   }
 
   @Override
@@ -331,7 +347,7 @@ public class Proc implements ProcMXBean {
     return status(this.procSelf.resolve("status"));
   }
 
-  static String status(Path resolve) {
+  static String status(Path path) {
     return "status";
   }
 

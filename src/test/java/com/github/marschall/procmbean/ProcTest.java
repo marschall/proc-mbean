@@ -46,7 +46,12 @@ class ProcTest {
 
   @Test
   void statm() {
-    Proc.statm(getSampleFile("statm-sample-input.txt"));
+    MemoryUsage memoryUsage = Proc.statm(getSampleFile("statm-sample-input.txt"));
+    assertEquals(1965, memoryUsage.getTotalProgram());
+    assertEquals(194, memoryUsage.getResidentSet());
+    assertEquals(178, memoryUsage.getResidentShared());
+    assertEquals(8, memoryUsage.getText());
+    assertEquals(111, memoryUsage.getData());
   }
 
   @Test

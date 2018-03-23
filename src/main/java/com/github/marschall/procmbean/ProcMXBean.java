@@ -10,7 +10,7 @@ public interface ProcMXBean {
 
   String stat();
 
-  String statm();
+  MemoryUsage statm();
 
   String status();
 
