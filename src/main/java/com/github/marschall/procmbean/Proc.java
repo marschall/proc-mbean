@@ -7,7 +7,11 @@ import static com.github.marschall.procmbean.Proc.Permission.SHARED;
 import static com.github.marschall.procmbean.Proc.Permission.WRITE;
 import static java.util.stream.Collectors.toList;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -22,8 +26,81 @@ import java.util.stream.Stream;
 public class Proc implements ProcMXBean {
 
   @Override
+  public IoStatistics getIoStatistics() {
+    return getIoStatistics(Paths.get("/proc/self/io"));
+  }
+
+  static IoStatistics getIoStatistics(Path path) {
+    try (InputStream input = Files.newInputStream(path);
+         Reader reader = new InputStreamReader(input, StandardCharsets.US_ASCII);
+         BufferedReader bufferedReader = new BufferedReader(reader, 32)) {
+
+      long charactersRead = 0L;
+      long charactersWritten = 0L;
+      long readSyscalls = 0L;
+      long writeSyscalls = 0L;
+      long bytesRead = 0L;
+      long bytesWritten = 0L;
+      long cancelledWriteBytes = 0L;
+      String line = bufferedReader.readLine();
+      while (line != null) {
+        // TODO more robust
+        String key = line.substring(0, line.indexOf(':'));
+        long value = Long.parseUnsignedLong(line.substring(line.indexOf(':') + 2));
+        switch (key) {
+          case "rchar":
+            charactersRead = value;
+            break;
+          case "wchar":
+            charactersWritten = value;
+            break;
+          case "syscr":
+            readSyscalls = value;
+            break;
+          case "syscw":
+            writeSyscalls = value;
+            break;
+          case "read_bytes":
+            bytesRead = value;
+            break;
+          case "write_bytes":
+            bytesWritten = value;
+            break;
+          case "cancelled_write_bytes":
+            cancelledWriteBytes = value;
+            break;
+          default:
+            // ignore
+            break;
+        }
+
+        line = bufferedReader.readLine();
+      }
+      return new IoStatistics(charactersRead, charactersWritten, readSyscalls, writeSyscalls, bytesRead, bytesWritten, cancelledWriteBytes);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  @Override
+  public int getOomScore() {
+    return getOomScore(Paths.get("/proc/self/oom_score"));
+  }
+
+  static int getOomScore(Path path) {
+    try (InputStream input = Files.newInputStream(path);
+         Reader reader = new InputStreamReader(input, StandardCharsets.US_ASCII);
+         BufferedReader bufferedReader = new BufferedReader(reader, 9)) {
+      String line = bufferedReader.readLine();
+      return Integer.parseInt(line);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  @Override
   public List<Mapping> getMappings() {
-    return parse(Paths.get("/proc/self/maps"));
+    return parseMapprings(Paths.get("/proc/self/maps"));
   }
 
   @Override
@@ -65,7 +142,7 @@ public class Proc implements ProcMXBean {
     return buffer.toString();
   }
 
-  static List<Mapping> parse(Path path) {
+  static List<Mapping> parseMapprings(Path path) {
     try (Stream<String> lines = Files.lines(path, StandardCharsets.US_ASCII)) {
       return lines
               .map(Proc::parseLine)
