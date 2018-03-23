@@ -25,9 +25,15 @@ import java.util.stream.Stream;
 
 public class Proc implements ProcMXBean {
 
+  private final Path procSelf;
+
+  public Proc() {
+    this.procSelf = Paths.get("/proc/self");
+  }
+
   @Override
   public IoStatistics getIoStatistics() {
-    return getIoStatistics(Paths.get("/proc/self/io"));
+    return getIoStatistics(this.procSelf.resolve("io"));
   }
 
   static IoStatistics getIoStatistics(Path path) {
@@ -84,7 +90,7 @@ public class Proc implements ProcMXBean {
 
   @Override
   public int getOomScore() {
-    return getOomScore(Paths.get("/proc/self/oom_score"));
+    return getOomScore(this.procSelf.resolve("oom_score"));
   }
 
   static int getOomScore(Path path) {
@@ -100,7 +106,7 @@ public class Proc implements ProcMXBean {
 
   @Override
   public List<Mapping> getMappings() {
-    return parseMapprings(Paths.get("/proc/self/maps"));
+    return getMappings(this.procSelf.resolve("maps"));
   }
 
   @Override
@@ -142,7 +148,7 @@ public class Proc implements ProcMXBean {
     return buffer.toString();
   }
 
-  static List<Mapping> parseMapprings(Path path) {
+  static List<Mapping> getMappings(Path path) {
     try (Stream<String> lines = Files.lines(path, StandardCharsets.US_ASCII)) {
       return lines
               .map(Proc::parseLine)
@@ -295,22 +301,37 @@ public class Proc implements ProcMXBean {
 
   @Override
   public String smaps() {
-    // TODO Auto-generated method stub
+    return smaps(this.procSelf.resolve("maps"));
+  }
+
+  static String smaps(Path resolve) {
     return "smaps";
   }
 
   @Override
   public String stat() {
+    return stat(this.procSelf.resolve("stat"));
+  }
+
+  static String stat(Path resolve) {
     return "stat";
   }
 
   @Override
   public String statm() {
+    return statm(this.procSelf.resolve("statm"));
+  }
+
+  static String statm(Path resolve) {
     return "statm";
   }
 
   @Override
   public String status() {
+    return status(this.procSelf.resolve("status"));
+  }
+
+  static String status(Path resolve) {
     return "status";
   }
 
