@@ -1,7 +1,7 @@
 rchar: 1948
-wchar: 0
+wchar: 1
 syscr: 7
-syscw: 0
-read_bytes: 0
-write_bytes: 0
-cancelled_write_bytes: 0
+syscw: 2
+read_bytes: 3
+write_bytes: 4
+cancelled_write_bytes: 5

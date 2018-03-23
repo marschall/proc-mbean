@@ -293,4 +293,25 @@ public class Proc implements ProcMXBean {
 
   }
 
+  @Override
+  public String smaps() {
+    // TODO Auto-generated method stub
+    return "smaps";
+  }
+
+  @Override
+  public String stat() {
+    return "stat";
+  }
+
+  @Override
+  public String statm() {
+    return "statm";
+  }
+
+  @Override
+  public String status() {
+    return "status";
+  }
+
 }
