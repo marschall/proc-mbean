@@ -16,10 +16,20 @@ public final class ProcessStat {
   private final long aggregatedBlockIoDelays;
   private final long guestTime;
 
-  public ProcessStat(int pid, char state, long minorFaults, long majorFaults,
-          long userTime, long kernelTime, int threads, long virtualMemorySize,
-          long residentSetSize, long softLimit, long pagesSwapped,
-          long aggregatedBlockIoDelays, long guestTime) {
+  ProcessStat(
+          int pid,
+          char state,
+          long minorFaults,
+          long majorFaults,
+          long userTime,
+          long kernelTime,
+          int threads,
+          long virtualMemorySize,
+          long residentSetSize,
+          long softLimit,
+          long pagesSwapped,
+          long aggregatedBlockIoDelays,
+          long guestTime) {
     this.pid = pid;
     this.state = state;
     this.minorFaults = minorFaults;
@@ -33,6 +43,58 @@ public final class ProcessStat {
     this.pagesSwapped = pagesSwapped;
     this.aggregatedBlockIoDelays = aggregatedBlockIoDelays;
     this.guestTime = guestTime;
+  }
+
+  public int getPid() {
+    return this.pid;
+  }
+
+  public char getState() {
+    return this.state;
+  }
+
+  public long getMinorFaults() {
+    return this.minorFaults;
+  }
+
+  public long getMajorFaults() {
+    return this.majorFaults;
+  }
+
+  public long getUserTime() {
+    return this.userTime;
+  }
+
+  public long getKernelTime() {
+    return this.kernelTime;
+  }
+
+  public int getThreads() {
+    return this.threads;
+  }
+
+  public long getVirtualMemorySize() {
+    return this.virtualMemorySize;
+  }
+
+  public long getResidentSetSize() {
+    return this.residentSetSize;
+  }
+
+  public long getSoftLimit() {
+    return this.softLimit;
+  }
+
+  public long getPagesSwapped() {
+    return this.pagesSwapped;
+  }
+
+  public long getAggregatedBlockIoDelays() {
+    return this.aggregatedBlockIoDelays;
+  }
+
+  public long getGuestTime() {
+    return this.guestTime;
   }
 
 }

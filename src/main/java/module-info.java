@@ -1,6 +1,6 @@
 module com.github.marschall.procmbean {
 
-  requires java.management;
+  requires transitive java.management;
   // for Unsafe.
   requires static jdk.unsupported;
 
