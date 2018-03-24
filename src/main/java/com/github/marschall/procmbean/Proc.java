@@ -318,11 +318,11 @@ public class Proc implements ProcMXBean {
   }
 
   @Override
-  public MemoryUsage statm() {
-    return statm(this.procSelf.resolve("statm"));
+  public MemoryUsageStatistics getMemoryUsageStatistics() {
+    return getMemoryUsageStatistics(this.procSelf.resolve("statm"));
   }
 
-  static MemoryUsage statm(Path path) {
+  static MemoryUsageStatistics getMemoryUsageStatistics(Path path) {
 
     try (InputStream input = Files.newInputStream(path);
          Reader reader = new InputStreamReader(input, StandardCharsets.US_ASCII);
@@ -336,7 +336,7 @@ public class Proc implements ProcMXBean {
       long residentShared = Long.parseUnsignedLong(elements[2]);
       long text = Long.parseUnsignedLong(elements[3]);
       long data = Long.parseUnsignedLong(elements[5]);
-      return new MemoryUsage(totalProgram, residentSet, residentShared, text, data);
+      return new MemoryUsageStatistics(totalProgram, residentSet, residentShared, text, data);
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }

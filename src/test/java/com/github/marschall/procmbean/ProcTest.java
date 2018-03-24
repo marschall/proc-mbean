@@ -45,8 +45,8 @@ class ProcTest {
   }
 
   @Test
-  void statm() {
-    MemoryUsage memoryUsage = Proc.statm(getSampleFile("statm-sample-input.txt"));
+  void getMemoryUsageStatistics() {
+    MemoryUsageStatistics memoryUsage = Proc.getMemoryUsageStatistics(getSampleFile("statm-sample-input.txt"));
     assertEquals(1965, memoryUsage.getTotalProgram());
     assertEquals(194, memoryUsage.getResidentSet());
     assertEquals(178, memoryUsage.getResidentShared());

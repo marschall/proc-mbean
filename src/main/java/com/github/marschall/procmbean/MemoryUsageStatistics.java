@@ -2,7 +2,7 @@ package com.github.marschall.procmbean;
 
 import java.beans.ConstructorProperties;
 
-public final class MemoryUsage {
+public final class MemoryUsageStatistics {
 
   private final long totalProgram;
   private final long residentSet;
@@ -11,7 +11,7 @@ public final class MemoryUsage {
   private final long data;
 
   @ConstructorProperties({"totalProgram", "residentSet", "residentShared", "text", "data"})
-  public MemoryUsage(long totalProgram, long residentSet, long residentShared,
+  public MemoryUsageStatistics(long totalProgram, long residentSet, long residentShared,
           long text, long data) {
     this.totalProgram = totalProgram;
     this.residentSet = residentSet;
