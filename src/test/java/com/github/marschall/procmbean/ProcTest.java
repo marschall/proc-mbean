@@ -47,11 +47,12 @@ class ProcTest {
   @Test
   void getMemoryUsageStatistics() {
     MemoryUsageStatistics memoryUsage = Proc.getMemoryUsageStatistics(getSampleFile("statm-sample-input.txt"));
-    assertEquals(1965, memoryUsage.getTotalProgram());
-    assertEquals(194, memoryUsage.getResidentSet());
-    assertEquals(178, memoryUsage.getResidentShared());
-    assertEquals(8, memoryUsage.getText());
-    assertEquals(111, memoryUsage.getData());
+    long pageSize = 4096L;
+    assertEquals(1965 * pageSize, memoryUsage.getTotalProgram());
+    assertEquals(194 * pageSize, memoryUsage.getResidentSet());
+    assertEquals(178 * pageSize, memoryUsage.getResidentShared());
+    assertEquals(8 * pageSize, memoryUsage.getText());
+    assertEquals(111 * pageSize, memoryUsage.getData());
   }
 
   @Test

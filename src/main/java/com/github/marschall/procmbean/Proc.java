@@ -6,6 +6,7 @@ import static com.github.marschall.procmbean.Proc.Permission.READ;
 import static com.github.marschall.procmbean.Proc.Permission.SHARED;
 import static com.github.marschall.procmbean.Proc.Permission.WRITE;
 import static java.util.stream.Collectors.toList;
+import static com.github.marschall.procmbean.PageSize.pageSize;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -331,11 +332,12 @@ public class Proc implements ProcMXBean {
       String line = bufferedReader.readLine();
       String[] elements = line.split(" ");
 
-      long totalProgram = Long.parseUnsignedLong(elements[0]);
-      long residentSet = Long.parseUnsignedLong(elements[1]);
-      long residentShared = Long.parseUnsignedLong(elements[2]);
-      long text = Long.parseUnsignedLong(elements[3]);
-      long data = Long.parseUnsignedLong(elements[5]);
+      int pageSize = pageSize();
+      long totalProgram = Long.parseUnsignedLong(elements[0]) * pageSize;
+      long residentSet = Long.parseUnsignedLong(elements[1]) * pageSize;
+      long residentShared = Long.parseUnsignedLong(elements[2]) * pageSize;
+      long text = Long.parseUnsignedLong(elements[3]) * pageSize;
+      long data = Long.parseUnsignedLong(elements[5]) * pageSize;
       return new MemoryUsageStatistics(totalProgram, residentSet, residentShared, text, data);
     } catch (IOException e) {
       throw new UncheckedIOException(e);
