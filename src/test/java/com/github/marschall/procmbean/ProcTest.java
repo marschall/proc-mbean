@@ -40,8 +40,8 @@ class ProcTest {
   }
 
   @Test
-  void stat() {
-    Proc.stat(getSampleFile("stat-sample-input.txt"));
+  void getStat() {
+    Proc.getStat(getSampleFile("stat-sample-input.txt"));
   }
 
   @Test

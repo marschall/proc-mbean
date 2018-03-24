@@ -310,12 +310,12 @@ public class Proc implements ProcMXBean {
   }
 
   @Override
-  public String stat() {
-    return stat(this.procSelf.resolve("stat"));
+  public ProcessStat getStat() {
+    return getStat(this.procSelf.resolve("stat"));
   }
 
-  static String stat(Path path) {
-    return "stat";
+  static ProcessStat getStat(Path path) {
+    return null;
   }
 
   @Override

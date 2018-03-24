@@ -3,6 +3,9 @@ package com.github.marschall.procmbean;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+/**
+ * Utility class for accessing the page size through {@code sun.misc.Unsafe}.
+ */
 final class PageSize {
 
   private static final int PAGE_SIZE;

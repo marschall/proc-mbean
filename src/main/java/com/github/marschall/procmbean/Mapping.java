@@ -1,6 +1,6 @@
 package com.github.marschall.procmbean;
 
-import java.beans.ConstructorProperties;
+import javax.management.openmbean.CompositeData;
 
 public final class Mapping {
 
@@ -12,9 +12,14 @@ public final class Mapping {
   private final boolean _private;
   private final String pathname;
 
-  @ConstructorProperties({"size", "read", "write", "execute", "shared", "private", "pathname"})
-  public Mapping(long size, boolean read, boolean write, boolean execute,
-          boolean shared, boolean prvate, String pathname) {
+  Mapping(
+          long size,
+          boolean read,
+          boolean write,
+          boolean execute,
+          boolean shared,
+          boolean prvate,
+          String pathname) {
     this.size = size;
     this.read = read;
     this.write = write;
@@ -22,6 +27,17 @@ public final class Mapping {
     this.shared = shared;
     this._private = prvate;
     this.pathname = pathname;
+  }
+
+  public static Mapping from(CompositeData compositeData) {
+    return new Mapping(
+            (Long) compositeData.get("size"),
+            (Boolean) compositeData.get("read"),
+            (Boolean) compositeData.get("write"),
+            (Boolean) compositeData.get("execute"),
+            (Boolean) compositeData.get("shared"),
+            (Boolean) compositeData.get("private"),
+            (String) compositeData.get("pathname"));
   }
 
   public long getSize() {
