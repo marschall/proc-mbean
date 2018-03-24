@@ -40,18 +40,33 @@ class ProcTest {
   }
 
   @Test
-  void stat() {
-    Proc.stat(getSampleFile("stat-sample-input.txt"));
+  void getStat() {
+    ProcessStat stat = Proc.getStat(getSampleFile("stat-sample-input.txt"));
+    long pageSize = 4096;
+    assertEquals(2720, stat.getPid());
+    assertEquals('R', stat.getState());
+    assertEquals(116L, stat.getMinorFaults());
+    assertEquals(0L, stat.getMajorFaults());
+    assertEquals(0L, stat.getUserTime());
+    assertEquals(0L, stat.getKernelTime());
+    assertEquals(1, stat.getThreads());
+    assertEquals(8048640L, stat.getVirtualMemorySize());
+    assertEquals(206L * pageSize, stat.getResidentSetSize());
+    assertEquals(Long.parseUnsignedLong("18446744073709551615"), stat.getSoftLimit());
+    assertEquals(0L, stat.getPagesSwapped());
+    assertEquals(0L, stat.getAggregatedBlockIoDelays());
+    assertEquals(0L, stat.getGuestTime());
   }
 
   @Test
   void getMemoryUsageStatistics() {
     MemoryUsageStatistics memoryUsage = Proc.getMemoryUsageStatistics(getSampleFile("statm-sample-input.txt"));
-    assertEquals(1965, memoryUsage.getTotalProgram());
-    assertEquals(194, memoryUsage.getResidentSet());
-    assertEquals(178, memoryUsage.getResidentShared());
-    assertEquals(8, memoryUsage.getText());
-    assertEquals(111, memoryUsage.getData());
+    long pageSize = 4096L;
+    assertEquals(1965 * pageSize, memoryUsage.getTotalProgram());
+    assertEquals(194 * pageSize, memoryUsage.getResidentSet());
+    assertEquals(178 * pageSize, memoryUsage.getResidentShared());
+    assertEquals(8 * pageSize, memoryUsage.getText());
+    assertEquals(111 * pageSize, memoryUsage.getData());
   }
 
   @Test

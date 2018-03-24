@@ -6,6 +6,7 @@ import static com.github.marschall.procmbean.Proc.Permission.READ;
 import static com.github.marschall.procmbean.Proc.Permission.SHARED;
 import static com.github.marschall.procmbean.Proc.Permission.WRITE;
 import static java.util.stream.Collectors.toList;
+import static com.github.marschall.procmbean.PageSize.pageSize;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -111,6 +112,7 @@ public class Proc implements ProcMXBean {
 
   @Override
   public String mappingsString(char separator) {
+    // TODO test
     StringBuilder buffer = new StringBuilder();
     buffer.append("size");
     buffer.append(separator);
@@ -126,6 +128,7 @@ public class Proc implements ProcMXBean {
     buffer.append(separator);
     buffer.append("pathname\n");
 
+    // TODO avoid building list
     for (Mapping mapping : this.getMappings()) {
       String pathname = mapping.getPathname();
       if (pathname != null) {
@@ -309,12 +312,40 @@ public class Proc implements ProcMXBean {
   }
 
   @Override
-  public String stat() {
-    return stat(this.procSelf.resolve("stat"));
+  public ProcessStat getStat() {
+    return getStat(this.procSelf.resolve("stat"));
   }
 
-  static String stat(Path path) {
-    return "stat";
+  static ProcessStat getStat(Path path) {
+
+    try (InputStream input = Files.newInputStream(path);
+         Reader reader = new InputStreamReader(input, StandardCharsets.US_ASCII);
+         BufferedReader bufferedReader = new BufferedReader(reader, 1024)) {
+
+      String line = bufferedReader.readLine();
+      String[] elements = line.split(" ");
+
+      int pageSize = pageSize();
+      int pid = Integer.parseUnsignedInt(elements[0]);
+      // TODO handle comm with spaces
+      char state = elements[3].charAt(0);
+      long minorFaults = Long.parseUnsignedLong(elements[9]);
+      long majorFaults = Long.parseUnsignedLong(elements[10]);
+      long userTime = Long.parseUnsignedLong(elements[13]);
+      long kernelTime = Long.parseUnsignedLong(elements[14]);
+      int threads = Integer.parseUnsignedInt(elements[19]);
+      long virtualMemorySize = Long.parseUnsignedLong(elements[22]);
+      long residentSetSize = Long.parseUnsignedLong(elements[23]) * pageSize;
+      long softLimit = Long.parseUnsignedLong(elements[24]);
+      long pagesSwapped = Long.parseUnsignedLong(elements[35]);
+      long aggregatedBlockIoDelays = Long.parseUnsignedLong(elements[41]);
+      long guestTime = Long.parseUnsignedLong(elements[42]);
+      return new ProcessStat(pid, state, minorFaults, majorFaults, userTime, kernelTime,
+              threads, virtualMemorySize, residentSetSize, softLimit, pagesSwapped,
+              aggregatedBlockIoDelays, guestTime);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
   }
 
   @Override
@@ -331,11 +362,12 @@ public class Proc implements ProcMXBean {
       String line = bufferedReader.readLine();
       String[] elements = line.split(" ");
 
-      long totalProgram = Long.parseUnsignedLong(elements[0]);
-      long residentSet = Long.parseUnsignedLong(elements[1]);
-      long residentShared = Long.parseUnsignedLong(elements[2]);
-      long text = Long.parseUnsignedLong(elements[3]);
-      long data = Long.parseUnsignedLong(elements[5]);
+      int pageSize = pageSize();
+      long totalProgram = Long.parseUnsignedLong(elements[0]) * pageSize;
+      long residentSet = Long.parseUnsignedLong(elements[1]) * pageSize;
+      long residentShared = Long.parseUnsignedLong(elements[2]) * pageSize;
+      long text = Long.parseUnsignedLong(elements[3]) * pageSize;
+      long data = Long.parseUnsignedLong(elements[5]) * pageSize;
       return new MemoryUsageStatistics(totalProgram, residentSet, residentShared, text, data);
     } catch (IOException e) {
       throw new UncheckedIOException(e);

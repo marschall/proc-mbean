@@ -8,7 +8,7 @@ public interface ProcMXBean {
 
   String smaps();
 
-  String stat();
+  ProcessStat getStat();
 
   MemoryUsageStatistics getMemoryUsageStatistics();
 
