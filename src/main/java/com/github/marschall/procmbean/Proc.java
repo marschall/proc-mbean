@@ -1,12 +1,12 @@
 package com.github.marschall.procmbean;
 
+import static com.github.marschall.procmbean.PageSize.pageSize;
 import static com.github.marschall.procmbean.Proc.Permission.EXECUTE;
 import static com.github.marschall.procmbean.Proc.Permission.PRIVATE;
 import static com.github.marschall.procmbean.Proc.Permission.READ;
 import static com.github.marschall.procmbean.Proc.Permission.SHARED;
 import static com.github.marschall.procmbean.Proc.Permission.WRITE;
 import static java.util.stream.Collectors.toList;
-import static com.github.marschall.procmbean.PageSize.pageSize;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.lang.management.ManagementFactory;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,7 +25,13 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import javax.management.JMException;
+import javax.management.MBeanServer;
+import javax.management.ObjectName;
+
 public class Proc implements ProcMXBean {
+
+  private static final String OBJECT_NAME = "com.github.marschall.procmbean:type=Proc";
 
   private final Path procSelf;
 
@@ -381,6 +388,19 @@ public class Proc implements ProcMXBean {
 
   static String status(Path path) {
     return "status";
+  }
+
+  public static void install() throws JMException {
+    MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+    ObjectName mxBeanName = new ObjectName(OBJECT_NAME);
+    Proc mxBean = new Proc();
+    server.registerMBean(mxBean, mxBeanName);
+  }
+
+  public static void uninstall() throws JMException {
+    MBeanServer server = ManagementFactory.getPlatformMBeanServer();
+    ObjectName mxBeanName = new ObjectName(OBJECT_NAME);
+    server.unregisterMBean(mxBeanName);
   }
 
 }

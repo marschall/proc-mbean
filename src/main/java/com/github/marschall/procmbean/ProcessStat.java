@@ -1,5 +1,7 @@
 package com.github.marschall.procmbean;
 
+import javax.management.openmbean.CompositeData;
+
 public final class ProcessStat {
 
   private final int pid;
@@ -43,6 +45,23 @@ public final class ProcessStat {
     this.pagesSwapped = pagesSwapped;
     this.aggregatedBlockIoDelays = aggregatedBlockIoDelays;
     this.guestTime = guestTime;
+  }
+
+  public static ProcessStat from(CompositeData compositeData) {
+    return new ProcessStat(
+            (Integer) compositeData.get("pid"),
+            (Character) compositeData.get("state"),
+            (Long) compositeData.get("minorFaults"),
+            (Long) compositeData.get("majorFaults"),
+            (Long) compositeData.get("userTime"),
+            (Long) compositeData.get("kernelTime"),
+            (Integer) compositeData.get("threads"),
+            (Long) compositeData.get("virtualMemorySize"),
+            (Long) compositeData.get("residentSetSize"),
+            (Long) compositeData.get("softLimit"),
+            (Long) compositeData.get("pagesSwapped"),
+            (Long) compositeData.get("aggregatedBlockIoDelays"),
+            (Long) compositeData.get("guestTime"));
   }
 
   public int getPid() {
