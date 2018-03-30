@@ -1,7 +1,7 @@
-rchar: 1948
-wchar: 1
-syscr: 7
-syscw: 2
-read_bytes: 3
-write_bytes: 4
-cancelled_write_bytes: 5
+rchar: 469225655
+wchar: 414040098
+syscr: 147430
+syscw: 389953
+read_bytes: 192565248
+write_bytes: 8749056
+cancelled_write_bytes: 344064

@@ -4,15 +4,13 @@ import java.util.List;
 
 public interface ProcMXBean {
 
-  // grep -i pagesize /proc/self/smaps
-
-  String smaps();
+  String getSmaps();
 
   ProcessStat getStat();
 
   MemoryUsageStatistics getMemoryUsageStatistics();
 
-  String status();
+  ProcessStatus getStatus();
 
   List<Mapping> getMappings();
 

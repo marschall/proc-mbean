@@ -310,11 +310,12 @@ public class Proc implements ProcMXBean {
   }
 
   @Override
-  public String smaps() {
+  public String getSmaps() {
     return smaps(this.procSelf.resolve("maps"));
   }
 
   static String smaps(Path path) {
+    // TODO implement
     return "smaps";
   }
 
@@ -382,12 +383,119 @@ public class Proc implements ProcMXBean {
   }
 
   @Override
-  public String status() {
-    return status(this.procSelf.resolve("status"));
+  public ProcessStatus getStatus() {
+    return getStatus(this.procSelf.resolve("status"));
   }
 
-  static String status(Path path) {
-    return "status";
+  static ProcessStatus getStatus(Path path) {
+    try (InputStream input = Files.newInputStream(path);
+         Reader reader = new InputStreamReader(input, StandardCharsets.US_ASCII);
+         BufferedReader bufferedReader = new BufferedReader(reader, 1024)) {
+
+      String state = "";
+      int fileDescriptorSlotsAllocated = 0;
+      long virtualMemoryPeak = 0L;
+      long virtualMemory = 0L;
+      long lockedMemory = 0L;
+      long pinnedMemory = 0L;
+      long residentSet = 0L;
+      long residentSetPreak = 0L;
+      long residentSetAnonymous = 0L;
+      long residentSetFile = 0L;
+      long residentSetShared = 0L;
+      long data = 0L;
+      long text = 0L;
+      long stack = 0L;
+      long sharedLibraryCode = 0L;
+      long swapped = 0L;
+      int threads = 0;
+      long contextSwitchesInvoluntary = 0L;
+      long contextSwitchesVoluntary = 0L;
+      String line = bufferedReader.readLine();
+      while (line != null) {
+        // TODO more robust
+        String key = line.substring(0, line.indexOf(':'));
+        String value = line.substring(line.indexOf(':') + 2);
+        switch (key) {
+          case "FDSize":
+            fileDescriptorSlotsAllocated = Integer.parseUnsignedInt(value);
+            break;
+          case "VmPeak":
+            virtualMemoryPeak = parseMemory(value);
+            break;
+          case "VmSize":
+            virtualMemory = parseMemory(value);
+            break;
+          case "VmLck":
+            lockedMemory = parseMemory(value);
+            break;
+          case "VmPin":
+            pinnedMemory = parseMemory(value);
+            break;
+          case "VmHWM":
+            residentSetPreak = parseMemory(value);
+            break;
+          case "VmRSS":
+            residentSet = parseMemory(value);
+            break;
+          case "RssAnon":
+            residentSetAnonymous = parseMemory(value);
+            break;
+          case "RssFile":
+            residentSetFile = parseMemory(value);
+            break;
+          case "RssShmem":
+            residentSetFile = parseMemory(value);
+            break;
+          case "VmData":
+            data = parseMemory(value);
+            break;
+          case "VmStk":
+            stack = parseMemory(value);
+            break;
+          case "VmExe":
+            text = parseMemory(value);
+            break;
+          case "VmLib":
+            sharedLibraryCode = parseMemory(value);
+            break;
+          case "VmSwap":
+            swapped = parseMemory(value);
+            break;
+          case "Threads":
+            threads = Integer.parseUnsignedInt(value);
+            break;
+          case "voluntary_ctxt_switches":
+            contextSwitchesInvoluntary = Long.parseUnsignedLong(value);
+            break;
+          case "nonvoluntary_ctxt_switches":
+            contextSwitchesVoluntary = Long.parseUnsignedLong(value);
+            break;
+          default:
+            // ignore
+            break;
+        }
+
+        line = bufferedReader.readLine();
+      }
+      return new ProcessStatus(state, fileDescriptorSlotsAllocated, virtualMemoryPeak, virtualMemory, lockedMemory, pinnedMemory,
+              residentSet, residentSetPreak, residentSetAnonymous, residentSetFile, residentSetShared, data, text, stack,
+              sharedLibraryCode, swapped, threads, contextSwitchesInvoluntary, contextSwitchesVoluntary);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+  }
+
+  static long parseMemory(String s) {
+    if (s.equals("0 kB")) {
+      return 0L;
+    }
+    int start = 0;
+    while ((s.charAt(start) == ' ') || (s.charAt(start) == '\t')) {
+      start += 1;
+    }
+    long value = Long.parseUnsignedLong(s.substring(start, s.indexOf(' ', start + 1)));
+    return value * getMultiplier(s.substring(s.lastIndexOf(' ') + 1));
   }
 
   public static void install() throws JMException {
@@ -401,6 +509,22 @@ public class Proc implements ProcMXBean {
     MBeanServer server = ManagementFactory.getPlatformMBeanServer();
     ObjectName mxBeanName = new ObjectName(OBJECT_NAME);
     server.unregisterMBean(mxBeanName);
+  }
+
+  static int getMultiplier(String unit) {
+    if ((unit == null) || unit.isEmpty()) {
+      return 1;
+    }
+    if (unit.equalsIgnoreCase("kb")) {
+      return 1024;
+    }
+    if (unit.equalsIgnoreCase("mb")) {
+      return 1024 * 1024;
+    }
+    if (unit.equalsIgnoreCase("gb")) {
+      return 1024 * 1024 * 1024;
+    }
+    throw new IllegalArgumentException("unknown unit:" + unit);
   }
 
 }

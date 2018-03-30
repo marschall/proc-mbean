@@ -1,12 +1,11 @@
 package com.github.marschall.procmbean;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,13 +18,13 @@ class ProcTest {
   @Test
   void getIoStatistics() {
     IoStatistics ioStatistics = Proc.getIoStatistics(getSampleFile("io-sample-input.txt"));
-    assertEquals(1948, ioStatistics.getCharactersRead());
-    assertEquals(1, ioStatistics.getCharactersWritten());
-    assertEquals(7, ioStatistics.getReadSyscalls());
-    assertEquals(2, ioStatistics.getWriteSyscalls());
-    assertEquals(3, ioStatistics.getBytesRead());
-    assertEquals(4, ioStatistics.getBytesWritten());
-    assertEquals(5, ioStatistics.getCancelledWriteBytes());
+    assertEquals(469225655L, ioStatistics.getCharactersRead());
+    assertEquals(414040098L, ioStatistics.getCharactersWritten());
+    assertEquals(147430L, ioStatistics.getReadSyscalls());
+    assertEquals(389953L, ioStatistics.getWriteSyscalls());
+    assertEquals(192565248L, ioStatistics.getBytesRead());
+    assertEquals(8749056L, ioStatistics.getBytesWritten());
+    assertEquals(344064L, ioStatistics.getCancelledWriteBytes());
   }
 
   @Test
@@ -43,8 +42,8 @@ class ProcTest {
   void getStat() {
     ProcessStat stat = Proc.getStat(getSampleFile("stat-sample-input.txt"));
     long pageSize = 4096;
-    assertEquals(2720, stat.getPid());
-    assertEquals('R', stat.getState());
+    assertEquals(3335, stat.getPid());
+    assertEquals('S', stat.getState());
     assertEquals(116L, stat.getMinorFaults());
     assertEquals(0L, stat.getMajorFaults());
     assertEquals(0L, stat.getUserTime());
@@ -62,21 +61,28 @@ class ProcTest {
   void getMemoryUsageStatistics() {
     MemoryUsageStatistics memoryUsage = Proc.getMemoryUsageStatistics(getSampleFile("statm-sample-input.txt"));
     long pageSize = 4096L;
-    assertEquals(1965 * pageSize, memoryUsage.getTotalProgram());
-    assertEquals(194 * pageSize, memoryUsage.getResidentSet());
-    assertEquals(178 * pageSize, memoryUsage.getResidentShared());
-    assertEquals(8 * pageSize, memoryUsage.getText());
-    assertEquals(111 * pageSize, memoryUsage.getData());
+    assertEquals(2043654 * pageSize, memoryUsage.getTotalProgram());
+    assertEquals(226084 * pageSize, memoryUsage.getResidentSet());
+    assertEquals(21643 * pageSize, memoryUsage.getResidentShared());
+    assertEquals(1 * pageSize, memoryUsage.getText());
+    assertEquals(329081 * pageSize, memoryUsage.getData());
   }
 
   @Test
-  void status() {
-    Proc.status(getSampleFile("status-sample-input.txt"));
+  void getStatus() {
+    ProcessStatus status = Proc.getStatus(getSampleFile("status-sample-input.txt"));
   }
 
   @Test
   void getOomScore() {
-    Proc.getOomScore(getSampleFile("oom_score-sample-input.txt"));
+    int oomScore = Proc.getOomScore(getSampleFile("oom_score-sample-input.txt"));
+    assertEquals(13L, oomScore);
+  }
+
+  @Test
+  void parseMemory() {
+    assertEquals(0L, Proc.parseMemory("0 kB"));
+    assertEquals(1003180L * 1024L, Proc.parseMemory("1003180 kB"));
   }
 
 }
