@@ -44,13 +44,13 @@ class ProcTest {
     long pageSize = 4096;
     assertEquals(3335, stat.getPid());
     assertEquals('S', stat.getState());
-    assertEquals(116L, stat.getMinorFaults());
-    assertEquals(0L, stat.getMajorFaults());
-    assertEquals(0L, stat.getUserTime());
-    assertEquals(0L, stat.getKernelTime());
-    assertEquals(1, stat.getThreads());
-    assertEquals(8048640L, stat.getVirtualMemorySize());
-    assertEquals(206L * pageSize, stat.getResidentSetSize());
+    assertEquals(1476957L, stat.getMinorFaults());
+    assertEquals(2643L, stat.getMajorFaults());
+    assertEquals(57048L, stat.getUserTime());
+    assertEquals(1940L, stat.getKernelTime());
+    assertEquals(48, stat.getThreads());
+    assertEquals(8370806784L, stat.getVirtualMemorySize());
+    assertEquals(226096L * pageSize, stat.getResidentSetSize());
     assertEquals(Long.parseUnsignedLong("18446744073709551615"), stat.getSoftLimit());
     assertEquals(0L, stat.getPagesSwapped());
     assertEquals(0L, stat.getAggregatedBlockIoDelays());
@@ -72,6 +72,24 @@ class ProcTest {
   void getStatus() {
     ProcessStatus status = Proc.getStatus(getSampleFile("status-sample-input.txt"));
     assertEquals("S (sleeping)", status.getState());
+    assertEquals(256, status.getFileDescriptorSlotsAllocated());
+    assertEquals(8252972L * 1024, status.getVirtualMemoryPeak());
+    assertEquals(8174660L * 1024, status.getVirtualMemory());
+    assertEquals(0L * 1024, status.getLockedMemory());
+    assertEquals(0L * 1024, status.getPinnedMemory());
+    assertEquals(1003180L * 1024, status.getResidentSetPreak());
+    assertEquals(921468L * 1024, status.getResidentSet());
+    assertEquals(834852L * 1024, status.getResidentSetAnonymous());
+    assertEquals(83204L * 1024, status.getResidentSetFile());
+    assertEquals(3412L * 1024, status.getResidentSetShared());
+    assertEquals(1318472L * 1024, status.getData());
+    assertEquals(136L * 1024, status.getStack());
+    assertEquals(4L * 1024, status.getText());
+    assertEquals(170400L * 1024, status.getSharedLibraryCode());
+    assertEquals(0L * 1024, status.getSwapped());
+    assertEquals(49L, status.getThreads());
+    assertEquals(4L, status.getContextSwitchesVoluntary());
+    assertEquals(1L, status.getContextSwitchesInvoluntary());
   }
 
   @Test

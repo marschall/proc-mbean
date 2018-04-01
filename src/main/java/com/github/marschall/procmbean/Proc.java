@@ -336,7 +336,7 @@ public class Proc implements ProcMXBean {
       int pageSize = pageSize();
       int pid = Integer.parseUnsignedInt(elements[0]);
       // TODO handle comm with spaces
-      char state = elements[3].charAt(0);
+      char state = elements[2].charAt(0);
       long minorFaults = Long.parseUnsignedLong(elements[9]);
       long majorFaults = Long.parseUnsignedLong(elements[10]);
       long userTime = Long.parseUnsignedLong(elements[13]);
@@ -417,6 +417,9 @@ public class Proc implements ProcMXBean {
         String key = line.substring(0, line.indexOf(':'));
         String value = line.substring(line.indexOf(':') + 2);
         switch (key) {
+          case "State":
+            state = value;
+            break;
           case "FDSize":
             fileDescriptorSlotsAllocated = Integer.parseUnsignedInt(value);
             break;
@@ -445,7 +448,7 @@ public class Proc implements ProcMXBean {
             residentSetFile = parseMemory(value);
             break;
           case "RssShmem":
-            residentSetFile = parseMemory(value);
+            residentSetShared = parseMemory(value);
             break;
           case "VmData":
             data = parseMemory(value);
@@ -466,10 +469,10 @@ public class Proc implements ProcMXBean {
             threads = Integer.parseUnsignedInt(value);
             break;
           case "voluntary_ctxt_switches":
-            contextSwitchesInvoluntary = Long.parseUnsignedLong(value);
+            contextSwitchesVoluntary = Long.parseUnsignedLong(value);
             break;
           case "nonvoluntary_ctxt_switches":
-            contextSwitchesVoluntary = Long.parseUnsignedLong(value);
+            contextSwitchesInvoluntary = Long.parseUnsignedLong(value);
             break;
           default:
             // ignore
