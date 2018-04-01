@@ -80,10 +80,12 @@ public final class ProcessStat {
     return this.majorFaults;
   }
 
+  @Units("bytes")
   public long getUserTime() {
     return this.userTime;
   }
 
+  @Units("clock ticks")
   public long getKernelTime() {
     return this.kernelTime;
   }
@@ -92,14 +94,17 @@ public final class ProcessStat {
     return this.threads;
   }
 
+  @Units("bytes")
   public long getVirtualMemorySize() {
     return this.virtualMemorySize;
   }
 
+  @Units("bytes")
   public long getResidentSetSize() {
     return this.residentSetSize;
   }
 
+  @Units("bytes")
   public long getSoftLimit() {
     return this.softLimit;
   }
@@ -108,10 +113,12 @@ public final class ProcessStat {
     return this.pagesSwapped;
   }
 
+  @Units("clock ticks")
   public long getAggregatedBlockIoDelays() {
     return this.aggregatedBlockIoDelays;
   }
 
+  @Units("clock ticks")
   public long getGuestTime() {
     return this.guestTime;
   }

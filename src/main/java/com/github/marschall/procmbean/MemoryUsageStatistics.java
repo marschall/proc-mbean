@@ -32,22 +32,27 @@ public final class MemoryUsageStatistics {
             (Long) compositeData.get("data"));
   }
 
+  @Units("bytes")
   public long getTotalProgram() {
     return this.totalProgram;
   }
 
+  @Units("bytes")
   public long getResidentSet() {
     return this.residentSet;
   }
 
+  @Units("bytes")
   public long getResidentShared() {
     return this.residentShared;
   }
 
+  @Units("bytes")
   public long getText() {
     return this.text;
   }
 
+  @Units("bytes")
   public long getData() {
     return this.data;
   }

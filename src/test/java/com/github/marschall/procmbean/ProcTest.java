@@ -71,6 +71,7 @@ class ProcTest {
   @Test
   void getStatus() {
     ProcessStatus status = Proc.getStatus(getSampleFile("status-sample-input.txt"));
+    assertEquals("S (sleeping)", status.getState());
   }
 
   @Test

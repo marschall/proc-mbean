@@ -56,14 +56,17 @@ public final class IoStatistics {
     return this.writeSyscalls;
   }
 
+  @Units("bytes")
   public long getBytesRead() {
     return this.bytesRead;
   }
 
+  @Units("bytes")
   public long getBytesWritten() {
     return this.bytesWritten;
   }
 
+  @Units("bytes")
   public long getCancelledWriteBytes() {
     return this.cancelledWriteBytes;
   }

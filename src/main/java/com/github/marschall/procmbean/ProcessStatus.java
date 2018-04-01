@@ -96,58 +96,72 @@ public final class ProcessStatus {
     return this.fileDescriptorSlotsAllocated;
   }
 
+  @Units("bytes")
   public long getVirtualMemoryPeak() {
     return this.virtualMemoryPeak;
   }
 
+  @Units("bytes")
   public long getVirtualMemory() {
     return this.virtualMemory;
   }
 
+  @Units("bytes")
   public long getLockedMemory() {
     return this.lockedMemory;
   }
 
+  @Units("bytes")
   public long getPinnedMemory() {
     return this.pinnedMemory;
   }
 
+  @Units("bytes")
   public long getResidentSet() {
     return this.residentSet;
   }
 
+  @Units("bytes")
   public long getResidentSetPreak() {
     return this.residentSetPreak;
   }
 
+  @Units("bytes")
   public long getResidentSetAnonymous() {
     return this.residentSetAnonymous;
   }
 
+  @Units("bytes")
   public long getResidentSetFile() {
     return this.residentSetFile;
   }
 
+  @Units("bytes")
   public long getResidentSetShared() {
     return this.residentSetShared;
   }
 
+  @Units("bytes")
   public long getData() {
     return this.data;
   }
 
+  @Units("bytes")
   public long getText() {
     return this.text;
   }
 
+  @Units("bytes")
   public long getStack() {
     return this.stack;
   }
 
+  @Units("bytes")
   public long getSharedLibraryCode() {
     return this.sharedLibraryCode;
   }
 
+  @Units("bytes")
   public long getSwapped() {
     return this.swapped;
   }

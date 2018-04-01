@@ -40,6 +40,7 @@ public final class Mapping {
             (String) compositeData.get("pathname"));
   }
 
+  @Units("bytes")
   public long getSize() {
     return this.size;
   }
